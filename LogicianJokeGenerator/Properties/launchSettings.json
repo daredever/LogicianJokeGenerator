@@ -1,0 +1,14 @@
+{
+    "profiles": {
+        "LogicianJokeGenerator": {
+            "commandName": "Project",
+            "environmentVariables": {
+                "JOKES_COUNT": "10",
+                "LOGICIANS_COUNT": "3"
+            }
+        },
+        "Docker": {
+            "commandName": "Docker"
+        }
+    }
+}

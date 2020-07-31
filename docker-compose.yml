@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+    logician-joke-generator:
+        build:
+            context: .
+            dockerfile: LogicianJokeGenerator/Dockerfile
+        image: "jokes/logician-joke-generator:1.0"
+        container_name: logician-joke-generator        
+        environment:
+            JOKES_COUNT: "10"
+            LOGICIANS_COUNT: "3"
