@@ -1,0 +1,2 @@
+# LogicianJokeGenerator
+Just for fun
