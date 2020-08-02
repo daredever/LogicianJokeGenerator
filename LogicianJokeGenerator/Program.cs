@@ -10,23 +10,12 @@ namespace LogicianJokeGenerator
         {
             var config = new ConfigurationBuilder().AddEnvironmentVariables().Build();
             var jokesCount = config.GetValue("JOKES_COUNT", 10);
-            var logiciansCount = config.GetValue("LOGICIANS_COUNT", 3);
-            await GenerateJokes(jokesCount, logiciansCount);
-        }
+            var logiciansPerJoke = config.GetValue("LOGICIANS_COUNT", 3);
 
-        private static async Task GenerateJokes(int jokesCount, int logiciansCount)
-        {
-            for (var joke = 1; joke <= jokesCount; joke++)
+            var jokesGenerator = new JokesGenerator(jokesCount, logiciansPerJoke);
+            foreach (var joke in jokesGenerator.Jokes)
             {
-                await Console.Out.WriteLineAsync(
-                    $"{Environment.NewLine}Joke #{joke}{Environment.NewLine}Do u all want a beer?");
-
-                var logiciansInPub = new LogiciansInPub(logiciansCount);
-                foreach (var answer in logiciansInPub.Answers)
-                {
-                    await Console.Out.WriteLineAsync($"- {answer}");
-                }
-
+                await Console.Out.WriteLineAsync(joke.Text);
                 await Task.Delay(TimeSpan.FromSeconds(1));
             }
         }
